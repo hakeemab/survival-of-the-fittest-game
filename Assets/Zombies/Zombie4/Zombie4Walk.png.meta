@@ -66,6 +66,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -472,6 +473,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Zombie4Walk_13: 4110797999472414082
+      Zombie4Walk_6: -7371345254310842542
+      Zombie4Walk_11: 7743351827823295343
+      Zombie4Walk_12: 5313385489595475697
+      Zombie4Walk_7: 9139636209408543698
+      Zombie4Walk_8: -1245137101423629819
+      Zombie4Walk_3: 1595040574049841064
+      Zombie4Walk_5: 8952364350631223902
+      Zombie4Walk_1: -7714838979657230907
+      Zombie4Walk_9: 1754855413255439467
+      Zombie4Walk_2: -7585532775734235729
+      Zombie4Walk_0: -5138210355436154742
+      Zombie4Walk_4: 2998730271183222875
+      Zombie4Walk_10: 8720882584895974074
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
