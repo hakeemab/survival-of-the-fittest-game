@@ -5,3 +5,6 @@ Wrote Game pitch, opened slack channel and github repo and learn unity - 7 hours
 
 Week 2:
 Studied movements logics, added player movement code - 9 hours.
+
+Week 3:
+Added camera follow implementation. Added enemy behaviour - 11 Hours this week (over 2 days).
