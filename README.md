@@ -8,3 +8,11 @@ Studied movements logics, added player movement code - 9 hours.
 
 Week 3:
 Added camera follow implementation. Added enemy behaviour - 11 Hours this week (over 2 days).
+
+Week 4: 
+Added zombies characters with movement and attacks, and assets - 10 hours.
+
+
+
+
+
