@@ -12,6 +12,9 @@ Added camera follow implementation. Added enemy behaviour - 11 Hours this week (
 Week 4: 
 Added zombies characters with movement and attacks, and assets - 10 hours.
 
+Week 5:
+Added Scenes and other assets - 7 hours.
+
 
 
 
