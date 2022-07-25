@@ -15,8 +15,5 @@ Added zombies characters with movement and attacks, and assets - 10 hours.
 Week 5:
 Added Scenes and other assets - 7 hours.
 
-
-
-
-
-
+Week 6:
+Designed and wrote wave spawners and triggered area - 8 Hours.
