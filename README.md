@@ -23,3 +23,9 @@ Downloaded and added backgrounds, zombies, pictures and looks - 8 Hours.
 
 Week 8:
 Added animations to zombies, effects and more assets.
+
+Week 9:
+Wrote Game Scripts and code for the whole game, fixed minor bugs.
+
+Week 10:
+Added sprites, effects and visuals and assets.
