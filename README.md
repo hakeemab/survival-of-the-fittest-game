@@ -17,7 +17,3 @@ Added Scenes and other assets - 7 hours.
 
 Week 6:
 Designed and wrote wave spawners and triggered area - 8 Hours.
-
-
-
-
