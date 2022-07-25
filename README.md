@@ -20,3 +20,6 @@ Designed and wrote wave spawners and triggered area - 8 Hours.
 
 Week 7:
 Downloaded and added backgrounds, zombies, pictures and looks - 8 Hours.
+
+Week 8:
+Added animations to zombies, effects and more assets.
