@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class WeaponSelect : MonoBehaviour
 {
-    public GameObject[] WeaponsStash;
+    public List<GameObject> WeaponsStash;
+    public GameObject WeaponsPrefab;
 
     public MovePlayer PlayerScript;
 
@@ -15,38 +16,96 @@ public class WeaponSelect : MonoBehaviour
     public Text txt_MinAmmo;
     public Text txt_maxAmmo;
 
+    public Text txt_Clips;
+
+    public Image WeaponImg;
+    public Transform setAnimPos;
+
+    private void Awake()
+    {
+        PlayerScript = GetComponentInParent<MovePlayer>();
+    }
+
     private void Start()
     {
+        InstantiateWeapons();
+
+        SetAllWeaponFirstConfigurations();
+    }
+    public void SetAllWeaponFirstConfigurations()
+    {
         CurrentWeaponChoose = 0;
+        WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().AimTransform = this.transform;
+        WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().playerGetIFfliped = PlayerScript;
         WeaponsStash[CurrentWeaponChoose].SetActive(true);
+        Sprite WpImage = WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().setWeaponImage;
+        WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().InteractWithAimTransformUI(this);
+        SetWeaponImage(WpImage);
         CurrentWeaponObj = WeaponsStash[CurrentWeaponChoose].gameObject;
     }
 
+
+    public void InstantiateWeapons()
+    {
+
+        List<GameObject> setList = new List<GameObject>();
+        WeaponShooting[] sp = WeaponsPrefab.GetComponentsInChildren<WeaponShooting>(true);
+        Debug.Log("added " + sp.Length);
+        foreach (WeaponShooting tr in sp)
+        {
+            Debug.Log("added " + tr.gameObject.name);
+          GameObject set =  Instantiate(tr.gameObject, this.transform.position, Quaternion.identity, this.transform);
+            WeaponsStash.Add(set);
+        }
+   
+    }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Keypad0))
-        {
-            WeaponsStash[CurrentWeaponChoose].SetActive(false);
-            CurrentWeaponChoose = 0;
-            WeaponsStash[CurrentWeaponChoose].SetActive(true);
-            CurrentWeaponObj = WeaponsStash[CurrentWeaponChoose].gameObject;
 
-
-        }
-        if (Input.GetKey(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            WeaponsStash[CurrentWeaponChoose].SetActive(false);
-            CurrentWeaponChoose = 1;
-            WeaponsStash[CurrentWeaponChoose].SetActive(true);
-            CurrentWeaponObj = WeaponsStash[CurrentWeaponChoose].gameObject;
+            if (WeaponsStash.Count - 1 > CurrentWeaponChoose)
+            {
+                WeaponsStash[CurrentWeaponChoose].SetActive(false);
+                CurrentWeaponChoose += 1;
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().AimTransform = this.transform;
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().playerGetIFfliped = PlayerScript;
+                WeaponsStash[CurrentWeaponChoose].SetActive(true);
+                Sprite WpImage = WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().setWeaponImage;
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().InteractWithAimTransformUI(this);
+                SetWeaponImage(WpImage);
+                CurrentWeaponObj = WeaponsStash[CurrentWeaponChoose].gameObject;
+            }
+            else
+            {
+                WeaponsStash[CurrentWeaponChoose].SetActive(false);
+                CurrentWeaponChoose = 0;
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().AimTransform = this.transform;
+
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().playerGetIFfliped = PlayerScript;
+
+                WeaponsStash[CurrentWeaponChoose].SetActive(true);
+                Sprite WpImage = WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().setWeaponImage;
+                WeaponsStash[CurrentWeaponChoose].GetComponent<WeaponShooting>().InteractWithAimTransformUI(this);
+
+                SetWeaponImage(WpImage);
+                CurrentWeaponObj = WeaponsStash[CurrentWeaponChoose].gameObject;
+            }
+
 
 
         }
     }
 
-    public void SetMinAmmo(int MinAmmo,int MaxAmmmo)
+    public void SetMinAmmo(int MinAmmo, int MaxAmmmo, int clips)
     {
         txt_MinAmmo.text = MinAmmo + "";
         txt_maxAmmo.text = MaxAmmmo + "";
+        txt_Clips.text = clips + "";
+    }
+
+    public void SetWeaponImage(Sprite setImg)
+    {
+        WeaponImg.sprite = setImg;
     }
 }

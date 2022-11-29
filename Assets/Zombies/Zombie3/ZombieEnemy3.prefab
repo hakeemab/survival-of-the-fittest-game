@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  DmgOfTheEnemey: 12
 --- !u!1 &5231157831406605300
 GameObject:
   m_ObjectHideFlags: 0

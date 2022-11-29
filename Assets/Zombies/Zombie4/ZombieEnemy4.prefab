@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  DmgOfTheEnemey: 15
 --- !u!1 &7099720459269816043
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695472e5aae08b34695e74ace2b56a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyParent: {fileID: 0}
 --- !u!1 &7099720459626826848
 GameObject:
   m_ObjectHideFlags: 0

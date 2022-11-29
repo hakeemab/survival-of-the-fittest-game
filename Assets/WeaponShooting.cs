@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 public class WeaponShooting : MonoBehaviour
 {
 
@@ -31,14 +32,22 @@ public class WeaponShooting : MonoBehaviour
     public GameObject MazzleFlash;
     public Animator anim;
 
+    public Sprite setWeaponImage;
+
+    public bool shotAnim;
+
+    public float WeaponDmg = 10f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         isFiring = false;
+        shotAnim = false;
         SRend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo);
+        AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo, Clips);
+        AimTransform.gameObject.GetComponent<WeaponSelect>().SetWeaponImage(setWeaponImage);
     }
 
     // Update is called once per frame
@@ -109,8 +118,10 @@ public class WeaponShooting : MonoBehaviour
         ///InstantiateBullet;
         GameObject BLT = Instantiate(Bullet, FirePlace.transform.position, FirePlace.transform.rotation);
         //BLT.GetComponent<Rigidbody2D>().AddForce(BLT.transform.forward * BulletForce , ForceMode2D.Impulse) ;
+        BLT.GetComponent<Bullet>().BulletDmg = WeaponDmg;
         BLT.GetComponent<Rigidbody2D>().velocity = AimTransform.transform.right * BulletForce;
         GameObject MazzuleFlash = Instantiate(MazzleFlash, FirePlace.transform.position, Quaternion.identity);
+        
         Quaternion e = Quaternion.Euler(0, 0, AimTransform.transform.rotation.y);
 
         MazzuleFlash.transform.localEulerAngles = new Vector3(0, AimTransform.localEulerAngles.y, AimTransform.localEulerAngles.z);
@@ -121,16 +132,30 @@ public class WeaponShooting : MonoBehaviour
 
         //AnimationTriger
         //
+        //shotAnim
+    
+        float setEnd = AimTransform.transform.localPosition.x - 0.89f;
+        /*
+        AimTransform.transform.DOLocalMoveX(0, 0.2f).OnComplete(()=>
+        {
+            AimTransform.transform.localPosition = new Vector2(-0.23f, 0);
+        });*/
 
-        anim.SetTrigger("Shot");
-      
-      
+        //
+
+        StartCoroutine(setShootingAnim());
+        //anim.SetTrigger("Shot");
+
+
         MinAmmo -= 1;
-        AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo);
+        AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo,Clips);
 
 
     }
-
+    public void InteractWithAimTransformUI(WeaponSelect Wp)
+    {
+        Wp.SetMinAmmo(MinAmmo, MaxAmmo, Clips);
+    }
     public void CheckAmmoAndReload()
     {
         if (MinAmmo > 0 && IsReloading == false && Clips > -1)
@@ -177,7 +202,18 @@ public class WeaponShooting : MonoBehaviour
         StartCoroutine("SetReloadFromWeaponPack");
     }
 
+    IEnumerator setShootingAnim()
+    {
+        if(shotAnim == false)
+        {
+            shotAnim = true;
+            AimTransform.transform.position = AimTransform.transform.position - transform.right;
+               yield return new WaitForSeconds(0.2f);
+               AimTransform.transform.localPosition = new Vector2(-0.23f, 0);
+            shotAnim = false;
 
+            }
+    }
     IEnumerator SetReloadFromWeaponPack()
     {
         IsReloading = true;

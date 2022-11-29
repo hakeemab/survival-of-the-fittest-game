@@ -954,6 +954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cavasPanelLostSetActive: {fileID: 0}
   ChooseLevel: {fileID: 2112883114}
+  cursor: {fileID: 2800000, guid: 127ada69ddccb284b982ba6a283dcc29, type: 3}
 --- !u!4 &583096933
 Transform:
   m_ObjectHideFlags: 0

@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695472e5aae08b34695e74ace2b56a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyParent: {fileID: 0}
 --- !u!1 &7422123033802027291
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  DmgOfTheEnemey: 7
 --- !u!1 &7422123034107559133
 GameObject:
   m_ObjectHideFlags: 0
