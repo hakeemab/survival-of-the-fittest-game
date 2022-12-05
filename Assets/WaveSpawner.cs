@@ -131,7 +131,6 @@ public class WaveSpawner : MonoBehaviour
 
     public void SetSpawnPos(GameObject MonsterSpawn,Vector3 MonsterSpawnPos,int NumberOfZombiesSpawn)
     {
-        Debug.Log("SpawnZombie");
         Debug.Log(NumberOfZombiesSpawn);
 
         for (int i = 0; i < NumberOfZombiesSpawn; i++)

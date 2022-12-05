@@ -10,6 +10,7 @@ public class GameManaging : MonoBehaviour
     public GameObject cavasPanelLostSetActive;
     public GameObject ChooseLevel;
 
+    public Texture2D cursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,9 @@ public class GameManaging : MonoBehaviour
         {
             instance = this;
         }
+
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+
     }
 
     // Update is called once per frame
@@ -32,12 +36,13 @@ public class GameManaging : MonoBehaviour
     }    
     public void SetBackToMenu()
     {
+        Time.timeScale = 2;
         SceneManager.LoadScene(0);
     }
 
     public void RestartScene()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 2;
         cavasPanelLostSetActive.gameObject.SetActive(false);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

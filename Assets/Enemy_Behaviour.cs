@@ -182,14 +182,14 @@ public class Enemy_Behaviour : MonoBehaviour
 
         }
         */
-        if (distanceToLeft < 10f )
+        if (distanceToLeft < 5f )
        {
            target = rightLimit;
             inRange = false;
            Flip();
 
        }
-       if (distanceToRight < 10f )
+       if (distanceToRight < 5f )
        {
             target = leftLimit;
             inRange = false;
@@ -294,8 +294,7 @@ public class Enemy_Behaviour : MonoBehaviour
             if (isDetectColliderInFront == true && isDetectColliderIn45Degree == false)
             {
                 rb.AddForce(Vector2.up * 50, ForceMode2D.Impulse);
-                Debug.Log("make jump");
-
+            
 
             }
             else
@@ -313,10 +312,21 @@ public class Enemy_Behaviour : MonoBehaviour
 
         if (IsFlipped)
         {
-            RaycastHit2D hit = Physics2D.Raycast(rayCastPos.transform.position, -Vector2.right, 10f);
-             if(hit.transform.gameObject.tag == "Player")
+            RaycastHit2D hit = Physics2D.Raycast(rayCastPos.transform.position, -Vector2.right, 5f);
+            RaycastHit2D hit2 = Physics2D.Raycast(rayCastPos.transform.position, Vector2.right, 5f);
+
+            if (hit.transform.gameObject.tag == "Player" || hit2.transform.gameObject.tag == "Player")
             {
-                target = hit.transform;
+                if(hit2.transform.gameObject.tag == "Player")
+                {
+                    target = hit2.transform;
+
+                }
+                if (hit.transform.gameObject.tag == "Player")
+                {
+                    target = hit.transform;
+
+                }
                 return true;
             }
              else

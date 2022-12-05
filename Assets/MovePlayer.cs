@@ -19,7 +19,13 @@ public class MovePlayer : MonoBehaviour
     public int NumJumpAllow = 2;
 
     public float health = 1f;
+    public float maxHealth = 1f;
     public Image imgHealth;
+
+
+    public float shield = 1f;
+    public float maxShield = 1f;
+    public Image imgShield;
 
     public Animator anim;
 
@@ -38,8 +44,16 @@ public class MovePlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         isFliped = false;
+        health = maxHealth;
+        imgHealth.fillAmount = maxHealth / health;
+
+        shield = maxShield;
+
+        imgShield.fillAmount = maxShield / shield;
+
         GainCoins = 0;
-        TotalLives = 5 ;
+        TotalLives = 3 ;
+        txt_Lives.text = "Lives : "+ TotalLives;
     }
 
     // Update is called once per frame
@@ -113,24 +127,61 @@ public class MovePlayer : MonoBehaviour
 
     public void TakeDmg(float dmg)
     {
-        if(health >= dmg && playerDead == false)
+
+
+        //
+        if(playerDead == false)
         {
-            health -= dmg;
-            imgHealth.fillAmount = health;
-            if (health <= 0)
+            if (shield > 0)
             {
+                shield -= dmg;
+                if (shield < 0)
+                {
+                    float setAfterDmg = shield;
+                    health -= setAfterDmg;
+                    shield = 0;
 
+                    if (health <= 0)
+                    {
+                        health = 0;
+                        Debug.Log("playerDEAD");
+
+
+                        imgShield.fillAmount = shield / maxShield;
+                        imgHealth.fillAmount = health / maxHealth;
+                        //ThePlayerIsDead
+                        // KillCarDestroy(PlaceWhoDamage);
+
+                    }
+
+                    imgShield.fillAmount = shield / maxShield;
+                    imgHealth.fillAmount = health / maxHealth;
+                }
+                imgShield.fillAmount = shield / maxShield;
+                imgHealth.fillAmount = health / maxHealth;
             }
+            else
+            {
+                health -= dmg;
+                if (health < 0)
+                {
+                    health = 0;
+                    Debug.Log("playerDEAD");
+                    //ThePlayerIsDead
+                    //SetTheNameWhoKilled
+                    playerDead = true;
 
 
+                }
+                imgHealth.fillAmount = health / maxHealth;
+            }
         }
         else
         {
-       
+
             if (TotalLives > 0 && playerDead == false)
             {
                 StartCoroutine("SetPlayerBackToLife");
-                playerDead = true;
             }
             else
             {
@@ -139,6 +190,9 @@ public class MovePlayer : MonoBehaviour
             }
         }
 
+
+        //
+
     }
     IEnumerator SetPlayerBackToLife()
     {
@@ -146,7 +200,7 @@ public class MovePlayer : MonoBehaviour
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         yield return new WaitForSeconds(2.0f);
-        TotalLives--;
+        TotalLives -= 1 ;
         txt_Lives.text = "Lives : " + TotalLives;
         health = 1f;
         imgHealth.fillAmount = health;
@@ -156,7 +210,9 @@ public class MovePlayer : MonoBehaviour
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         playerDead = false;
-       
+        StopAllCoroutines();
+
+
     }
 
 

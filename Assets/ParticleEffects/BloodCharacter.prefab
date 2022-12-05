@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2830545057532612302}
   - component: {fileID: 2830545057532612301}
   - component: {fileID: 2830545057532612300}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BloodCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.9
+      scalar: 5.36
       minScalar: 1
       maxCurve:
         serializedVersion: 2

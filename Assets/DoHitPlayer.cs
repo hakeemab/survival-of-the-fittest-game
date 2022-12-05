@@ -7,6 +7,8 @@ public class DoHitPlayer : MonoBehaviour
     private Enemy_Behaviour enemyParent;
     public GameObject Target;
 
+    public float DmgOfTheEnemey = 0.2f;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -40,7 +42,7 @@ public class DoHitPlayer : MonoBehaviour
         if(t.GetComponent<MovePlayer>() != null && t != null)
         {
             Debug.Log(t.gameObject.name);
-            t.GetComponent<MovePlayer>().TakeDmg(0.2f);
+            t.GetComponent<MovePlayer>().TakeDmg(DmgOfTheEnemey);
             Debug.Log("the player is hitted");
 
 
