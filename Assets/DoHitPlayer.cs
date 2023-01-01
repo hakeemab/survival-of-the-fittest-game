@@ -7,7 +7,7 @@ public class DoHitPlayer : MonoBehaviour
     private Enemy_Behaviour enemyParent;
     public GameObject Target;
 
-    public float DmgOfTheEnemey = 0.2f;
+    public float DmgOfTheEnemey = 2f;
 
     // Start is called before the first frame update
     private void Awake()

@@ -42,7 +42,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -281,13 +280,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Zombie3Idle_2: -2235187927314984212
-      Zombie3Idle_1: 3459334911658757358
-      Zombie3Idle_5: 3959994599449450931
-      Zombie3Idle_0: 6697924558153364975
-      Zombie3Idle_4: -1253988794167482574
-      Zombie3Idle_3: 2745412982870293210
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
