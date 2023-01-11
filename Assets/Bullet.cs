@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour
     public GameObject PsForDestroyBullet;
     public GameObject psForHitEnemy;
 
+
+    public int maxHits = 1;
+    public int hit = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +52,16 @@ public class Bullet : MonoBehaviour
             GameObject ps = Instantiate(psForHitEnemy, pos, rot);
             collision.gameObject.GetComponent<Enemy_Behaviour>().takeDmg(BulletDmg);
             Destroy(ps, 2f);
-            Destroy(this.gameObject);
+
+            if (hit < maxHits)
+            {
+                hit++;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+      
 
         }
         else

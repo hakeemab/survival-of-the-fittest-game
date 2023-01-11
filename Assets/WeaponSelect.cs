@@ -59,6 +59,47 @@ public class WeaponSelect : MonoBehaviour
         }
    
     }
+
+    public void AddNewWeapon(GameObject AddWeaponToStash)
+    {
+        WeaponShooting tr = AddWeaponToStash.GetComponentInChildren<WeaponShooting>(true);
+        GameObject set = Instantiate(AddWeaponToStash.gameObject, this.transform.position, Quaternion.identity, this.transform);
+        set.transform.eulerAngles = new Vector3(0, 0, 0);
+        set.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        WeaponsStash.Add(set);
+    }
+    public void AddClips(int numClipsTOADD)
+    {
+        foreach (GameObject tr in WeaponsStash)
+        {
+            WeaponShooting Ws = tr.GetComponent<WeaponShooting>();
+            Ws.Clips += numClipsTOADD;
+
+        }
+        SetAllWeaponFirstConfigurations();
+
+    }
+
+    public bool WeaponCheckIfValid(GameObject getWeapon)
+    {
+        Debug.Log("" + WeaponsStash.Count);
+        for (int i = 0;i < WeaponsStash.Count;i++)
+        {
+            WeaponShooting ws = WeaponsStash[i].GetComponent<WeaponShooting>();
+            if (ws.WeaponName == getWeapon.GetComponent<WeaponShooting>().WeaponName)
+            {
+                Debug.Log("Is already exist OBJECT");
+
+                return true;
+            }
+      
+        }
+        return false;
+    
+            
+   
+    }
     private void Update()
     {
 

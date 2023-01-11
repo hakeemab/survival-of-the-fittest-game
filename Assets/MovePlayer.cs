@@ -153,7 +153,7 @@ public class MovePlayer : MonoBehaviour
                         // KillCarDestroy(PlaceWhoDamage);
 
                     }
-
+                   
                     imgShield.fillAmount = shield / maxShield;
                     imgHealth.fillAmount = health / maxHealth;
                 }
@@ -179,7 +179,7 @@ public class MovePlayer : MonoBehaviour
         else
         {
 
-            if (TotalLives > 0 && playerDead == false)
+            if (TotalLives > 0 && playerDead == true)
             {
                 StartCoroutine("SetPlayerBackToLife");
             }
@@ -194,6 +194,26 @@ public class MovePlayer : MonoBehaviour
         //
 
     }
+
+    public void AddPlayerHealth(float healthSet)
+    {
+        health += healthSet;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        imgHealth.fillAmount = health / maxHealth;
+    }
+    public void AddPlayerShield(float shieldSet)
+    {
+        shield += shieldSet;
+        if(shield > maxShield)
+        {
+            shield = maxShield;
+        }
+        imgShield.fillAmount = shield / maxShield;
+
+    }
     IEnumerator SetPlayerBackToLife()
     {
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -202,14 +222,18 @@ public class MovePlayer : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         TotalLives -= 1 ;
         txt_Lives.text = "Lives : " + TotalLives;
-        health = 1f;
-        imgHealth.fillAmount = health;
+        health = maxHealth;
+        shield = maxShield;
+        imgShield.fillAmount = shield / maxShield;
+        imgHealth.fillAmount = health / maxHealth;
+
         transform.position = WaveSpawner.instance.spawnPlayerPos.transform.position;
 
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         playerDead = false;
+
         StopAllCoroutines();
 
 

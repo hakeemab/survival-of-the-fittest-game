@@ -96,8 +96,8 @@ public class WaveSpawner : MonoBehaviour
             {
                 WaveBegan = false;
             }
-            
-            
+            //check
+
         }
         /* if( NumOfKillPerWave <= CurrentKillNumPerWave)*/
        else
@@ -105,11 +105,19 @@ public class WaveSpawner : MonoBehaviour
             if(setActive == false)
             {
                 WaveBegan = false;
+
+
+
+                //
                 StartCoroutine("SetSecondWaveZombies");
                 setActive = true;
+                //IntergrateShopSystem
+
+         
+
             }
 
-       }
+        }
         
     }
 
@@ -180,6 +188,11 @@ public class WaveSpawner : MonoBehaviour
     }
      IEnumerator SetSecondWaveZombies()
      {
+        if (Wave % 2 == 0)
+        {
+            Debug.Log("waveStopped");
+            GetComponent<ShopSystem>().SetShopAndStoppedGameActivate();
+        }
         yield return new WaitForSeconds(5.0f);
         AnimWaveNum(Wave + 1);
         yield return new WaitForSeconds(2.0f);

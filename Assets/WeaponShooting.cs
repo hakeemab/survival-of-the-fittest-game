@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.U2D;
+using UnityEngine.Experimental.Rendering.Universal;
 public class WeaponShooting : MonoBehaviour
 {
 
@@ -30,7 +32,6 @@ public class WeaponShooting : MonoBehaviour
 
     public Vector3 ScreenPos;
     public GameObject MazzleFlash;
-    public Animator anim;
 
     public Sprite setWeaponImage;
 
@@ -38,6 +39,10 @@ public class WeaponShooting : MonoBehaviour
 
     public float WeaponDmg = 10f;
 
+    public Light2D lightSet;
+    public Light2D LightInstance;
+
+    public string WeaponName;
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +50,10 @@ public class WeaponShooting : MonoBehaviour
         isFiring = false;
         shotAnim = false;
         SRend = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
         AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo, Clips);
         AimTransform.gameObject.GetComponent<WeaponSelect>().SetWeaponImage(setWeaponImage);
+
+        
     }
 
     // Update is called once per frame
@@ -128,12 +134,23 @@ public class WeaponShooting : MonoBehaviour
 
 
          Destroy(MazzuleFlash, 0.2f);
+        //
+        if(LightInstance == null)
+        {
+            LightInstance = Instantiate(lightSet, FirePlace.transform.position, FirePlace.transform.rotation);
+           
+        }
+        LightInstance.transform.position = FirePlace.transform.position;
+        LightInstance.enabled = true;
+        Invoke("disabledLight", 0.1f);
+        
 
+        //
 
         //AnimationTriger
         //
         //shotAnim
-    
+
         float setEnd = AimTransform.transform.localPosition.x - 0.89f;
         /*
         AimTransform.transform.DOLocalMoveX(0, 0.2f).OnComplete(()=>
@@ -151,6 +168,11 @@ public class WeaponShooting : MonoBehaviour
         AimTransform.gameObject.GetComponent<WeaponSelect>().SetMinAmmo(MinAmmo, MaxAmmo,Clips);
 
 
+    }
+
+    public void disabledLight()
+    {
+        LightInstance.enabled = false;
     }
     public void InteractWithAimTransformUI(WeaponSelect Wp)
     {
