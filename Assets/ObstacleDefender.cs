@@ -9,13 +9,20 @@ public class ObstacleDefender : MonoBehaviour
     public Image imgHealth;
     public bool isTrigger;
     public int currentCostToFillObstacle;
-
+    public Color getCurMat;
+    public Color ReplaceInstanceMat;
+    public float MaxHealth;
+    public Text uiFixWallText;
     public bool isDead;
     // Start is called before the first frame update
     void Start()
     {
         isTrigger = false;
         isDead = false;
+        health = MaxHealth;
+        getCurMat = GetComponent<SpriteRenderer>().color;
+        //GetComponent<SpriteRenderer>().material = Instantiate<Material>(getCurMat);
+        ReplaceInstanceMat = GetComponent<SpriteRenderer>().color;
         currentCostToFillObstacle = 50;
     }
 
@@ -26,7 +33,7 @@ public class ObstacleDefender : MonoBehaviour
     }
     public void TakeDmg(float dmg)
     {
-        if(dmg <= health)
+        if(0 < health)
         {
             health -= dmg;
             imgHealth.fillAmount = health;
@@ -34,7 +41,12 @@ public class ObstacleDefender : MonoBehaviour
             {
                 isDead = true;
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                Destroy(this.gameObject);
+                isTrigger = true;
+                 ReplaceInstanceMat.a = 0.1f;
+                GetComponent<SpriteRenderer>().color = ReplaceInstanceMat;
+                health = 0;
+                Debug.Log("Dead");
+                //Destroy(this.gameObject);
 
 
             }
@@ -43,20 +55,32 @@ public class ObstacleDefender : MonoBehaviour
         else
         {
             isDead = true;
+            health = 0;
+
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            Destroy(this.gameObject);
+            isTrigger = true;
+            ReplaceInstanceMat.a = 0.1f;
+            GetComponent<SpriteRenderer>().color = ReplaceInstanceMat;
+
+            Debug.Log("Dead2");
+
+            //Destroy(this.gameObject);
 
 
         }
     }
     
-    public void ReviveObstacle(int cost,GameObject playerObj)
+    public void ReviveObstacle()
     {
-        if(currentCostToFillObstacle <= cost)
-        {
+            health = MaxHealth;
+            imgHealth.fillAmount = health / MaxHealth;
             isDead = false;
-            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            isTrigger = false;
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            ReplaceInstanceMat.a = 1f;
+            GetComponent<SpriteRenderer>().color = ReplaceInstanceMat;
 
-        }
+
+        
     }    
 }

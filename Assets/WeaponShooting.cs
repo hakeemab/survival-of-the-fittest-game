@@ -59,8 +59,8 @@ public class WeaponShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleAiming();
-        HandleShoot();
+        //HandleAiming();
+        //HandleShoot();
     }
     public void HandleAiming()
     {

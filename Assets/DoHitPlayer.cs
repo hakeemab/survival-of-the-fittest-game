@@ -37,7 +37,7 @@ public class DoHitPlayer : MonoBehaviour
         }
     }
 
-    public void CheckIfTargetIsNull(GameObject t)
+    public void CheckIfTargetIsNull(GameObject t,Enemy_Behaviour enemyParentCheck)
     {
         if(t.GetComponent<MovePlayer>() != null && t != null)
         {
@@ -47,15 +47,18 @@ public class DoHitPlayer : MonoBehaviour
 
 
         }
-        else if (t.GetComponent<ObstacleDefender>() != null && t != null)
+        else if (t.GetComponent<ObstacleDefender>() != null && t != null && t.GetComponent<ObstacleDefender>().isDead == false)
         {
             t.GetComponent<ObstacleDefender>().TakeDmg(0.2f);
             Debug.Log("the Obstacle is hitted");
 
         }
-        else
+        else if(t.GetComponent<ObstacleDefender>().isDead == true)
         {
-           
+            
+            //enemyParentCheck.SelectTarget();
+            enemyParentCheck.DetectPlayer();
+
             //enemyParent.SelectTarget();
 
         }

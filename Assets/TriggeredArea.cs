@@ -23,10 +23,14 @@ public class TriggeredArea : MonoBehaviour
     {
        if (collision.gameObject.CompareTag("Obstacle"))
        {
-          enemyParent.target = collision.transform;
-          enemyParent.inRange = true;
-          enemyParent.HotZone.SetActive(true);
-          gameObject.SetActive(false);
+            if(collision.gameObject.GetComponent<ObstacleDefender>().isDead == false)
+            {
+                enemyParent.target = collision.transform;
+                enemyParent.inRange = true;
+                enemyParent.HotZone.SetActive(true);
+                gameObject.SetActive(false);
+            }
+
         }
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -35,6 +39,18 @@ public class TriggeredArea : MonoBehaviour
             enemyParent.inRange = true;
             enemyParent.HotZone.SetActive(true);
             gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (enemyParent.target != null && enemyParent.target.tag == "Obstacle")
+        {
+            if (enemyParent.target.GetComponent<ObstacleDefender>().isDead == true)
+            {
+                enemyParent.SelectTarget();
+
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

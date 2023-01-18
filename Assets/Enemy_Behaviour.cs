@@ -249,13 +249,17 @@ public class Enemy_Behaviour : MonoBehaviour
 
         ///
     }
-
+    public void SetTargetToDirection()
+    {
+        DetectPlayer();
+    }
     public void CallHitBox()
     {
         if(target != null)
         {
-            hitBox.GetComponent<DoHitPlayer>().CheckIfTargetIsNull(target.gameObject);
+            hitBox.GetComponent<DoHitPlayer>().CheckIfTargetIsNull(target.gameObject,this);
         }
+       
 
     }
 
@@ -271,8 +275,7 @@ public class Enemy_Behaviour : MonoBehaviour
             isDetectColliderIn45Degree = Physics2D.Raycast(rayCastPos.transform.position, vec, dis2, layerMK);
             if(isDetectColliderInFront == true && isDetectColliderIn45Degree == false)
             {
-                rb.AddForce(Vector2.up * 80, ForceMode2D.Impulse);
-                Debug.Log("make jump");
+                rb.AddForce(Vector2.up * 30, ForceMode2D.Impulse);
 
             }
             else
