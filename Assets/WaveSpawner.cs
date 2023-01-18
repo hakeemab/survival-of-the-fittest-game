@@ -15,11 +15,12 @@ public class WaveSpawner : MonoBehaviour
     public static WaveSpawner instance;
 
     public GameObject[] ZombiesSpawners;
+    public List<GameObject> SpawnedZombiesLister;
 
     public GameObject[] PosToSpawnZombies;
 
-    public Transform leftLimit;
-    public Transform rightLimit;
+    public Transform []leftLimit;
+    public Transform []rightLimit;
 
     public int Wave;
 
@@ -30,8 +31,8 @@ public class WaveSpawner : MonoBehaviour
     public float TimeRatePerWaveDouble;
 
     //Wave Variables
-    int RandomSetPos1;
-    int RandomSetPos2;
+    [SerializeField]int RandomSetPos1;
+   [SerializeField] int RandomSetPos2;
 
     public Text txtWave;
     //
@@ -71,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
         TimeRatePerWaveDouble = 7f;
         numOfSpawnedZombiesTotal = 0;
         RandomSetPos1 = 0;
-        RandomSetPos2 = 1;
+        RandomSetPos2 = PosToSpawnZombies.Length;
 
         RandomZombie1 = 0;
         RandomZombie2 = 0;
@@ -88,11 +89,14 @@ public class WaveSpawner : MonoBehaviour
      
         if(WaveBegan)
         {
+            /*
             if(numOfSpawnedZombiesTotal < NumOfKillPerWave)
             {
                 SetZombies();
-            }
-            if(CurrentKillNumPerWave == NumOfKillPerWave)
+            }*/
+            SetZombies();
+
+            if (CurrentKillNumPerWave == NumOfKillPerWave)
             {
                 WaveBegan = false;
             }
@@ -132,24 +136,24 @@ public class WaveSpawner : MonoBehaviour
             int RandomZombie = Random.Range(RandomZombie1, RandomZombie2);
 
             int NumberZombie = Random.Range(NumberOfZombiesRandomSpawn1, NumberOfZombiesRandomSpawn2);
-            SetSpawnPos(ZombiesSpawners[RandomZombie], PosToSpawnZombies[RandomSetPos].transform.position, NumberZombie);
+            SetSpawnPos(ZombiesSpawners[RandomZombie], PosToSpawnZombies[RandomSetPos].transform.position, NumberZombie, RandomSetPos);
             TimeRateToSpawn = 0;
         }
     }
 
-    public void SetSpawnPos(GameObject MonsterSpawn,Vector3 MonsterSpawnPos,int NumberOfZombiesSpawn)
+    public void SetSpawnPos(GameObject MonsterSpawn,Vector3 MonsterSpawnPos,int NumberOfZombiesSpawn,int SetSpawnVar)
     {
-        Debug.Log(NumberOfZombiesSpawn);
 
         for (int i = 0; i < NumberOfZombiesSpawn; i++)
         {
            GameObject GO = Instantiate(MonsterSpawn, MonsterSpawnPos, Quaternion.identity);
-            GO.GetComponent<Enemy_Behaviour>().leftLimit = leftLimit;
-            GO.GetComponent<Enemy_Behaviour>().rightLimit = rightLimit;
+            GO.GetComponent<Enemy_Behaviour>().leftLimit = leftLimit[SetSpawnVar];
+            GO.GetComponent<Enemy_Behaviour>().rightLimit = rightLimit[SetSpawnVar];
             GO.GetComponent<Enemy_Behaviour>().MoveSpeed = Random.Range(2f, 4f);
             GO.GetComponent<Enemy_Behaviour>().enabled = true;
             GO.gameObject.SetActive(true);
             numOfSpawnedZombiesTotal++;
+            SpawnedZombiesLister.Add(GO);
             SpawnedZombiesSet++;
 
         }
@@ -177,9 +181,19 @@ public class WaveSpawner : MonoBehaviour
  
     }
 
+    public void DestroyALLCurrentZombies()
+    {
+        for(int i = 0; i < SpawnedZombiesLister.Count;i++)
+        {
+            GameObject goSet = SpawnedZombiesLister[i].gameObject;
+            Destroy(goSet.gameObject);
+        }
+        SpawnedZombiesLister.RemoveRange(0, SpawnedZombiesLister.Count);
+    }
     public void PassWave()
     {
         Wave += 1;
+        DestroyALLCurrentZombies(); 
         IncrimentToSetMoreHardPerWave();
     }
     public void AnimWaveNum(int iWave)
