@@ -1,5 +1,7 @@
 Survival of the fittest
 
+SEMESTER 1:
+
 Week 1:
 Wrote Game pitch, opened slack channel and github repo and learn unity - 7 hours in total.
 
@@ -36,5 +38,40 @@ Adjust Libraries folder and upload missing files - 6 Hours.
 Week 12:
 bugs fixes and finshes, uploaded the whole project - 5 Hours.
 
-Week 13(current):
+Week 13:
 merge open PR's in github, resolve conflicts and arrange the repository - 5 Hours.
+
+2nd SEMESTER:
+
+Week 2:
+Implemented new health and shield bars system - 7 Hours
+
+Week 3:
+Added new UI Clips and fixed ammo UI and added image UI to every single weapon - 9 Hours
+
+Week 4:
+added damage to each weapon and added new weapons - 8 Hours
+
+Week 5:
+Added more types of zombies with different powers - 8 Hours
+
+Week 6:
+Added game controls and shop at the end of every wave - 9 Hours
+
+Week 7:
+Added weapons switching and different fire-rates - 6 Hours
+
+Week 8:
+Did not work due to holidays
+
+Week 9:
+Added a new bigger map - 5 Hours
+
+Week 10:
+Added wall repairs and explosives - 7 Hours
+
+Week 11:
+Added new map with platforming - 4 Hours
+
+Week 12:
+Background and colors changes and bugs fixes
