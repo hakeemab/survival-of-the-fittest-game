@@ -2,7 +2,7 @@
 
 ## Table of contents
 * [General info](#General-info)
-* [How to play](#How to play)
+* [How to play](#"How to play")
 * [Controls](#Controls)
 
 
