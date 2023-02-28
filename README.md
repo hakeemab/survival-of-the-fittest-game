@@ -1,5 +1,13 @@
 # Survival of the Fittest
 
+## Table of contents
+* [General info](#General-info)
+* [How to play](#How to play)
+* [Controls](#Controls)
+
+
+## General-info
+
 Survival of the Fittest is a strategy survival game where the objective is to survive as many rounds as possible. Each round is progressively harder than the previous one, with different types of zombies spawning with varying strengths and play styles.
 
 ![](https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/general%20game%20picture.jpeg)
