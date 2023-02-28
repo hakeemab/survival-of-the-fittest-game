@@ -2,7 +2,7 @@
 
 ## Table of contents
 * [General info](#General-info)
-* [How to play](#"How to play")
+* [How to play](#How-to-play)
 * [Controls](#Controls)
 
 
@@ -21,7 +21,7 @@ The game has three maps, each with its unique challenges and assets. While the a
 ![](https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/main%20menu%20picture.jpeg)
 
 
-## How to Play
+## How-to-Play
 
 To start the game, click the "Play" button on the main menu. The player will spawn in the middle of the map with zombies coming from all directions. The goal is to eliminate as many zombies as possible before they reach the player.
 
