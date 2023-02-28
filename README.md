@@ -2,7 +2,7 @@
 
 Survival of the Fittest is a strategy survival game where the objective is to survive as many rounds as possible. Each round is progressively harder than the previous one, with different types of zombies spawning with varying strengths and play styles.
 
-[](https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/general%20game%20picture.jpeg)
+[general](https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/general%20game%20picture.jpeg)
 
 The game involves managing items and money between rounds. Players earn money at the end of each round and can use it to purchase ammo, shields, and new weapons from the shop.
 
