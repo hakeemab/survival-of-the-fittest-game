@@ -1,77 +1,37 @@
-Survival of the fittest
+# Survival of the Fittest
 
-SEMESTER 1:
+Survival of the Fittest is a strategy survival game where the objective is to survive as many rounds as possible. Each round is progressively harder than the previous one, with different types of zombies spawning with varying strengths and play styles.
 
-Week 1:
-Wrote Game pitch, opened slack channel and github repo and learn unity - 7 hours in total.
+(https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/general%20game%20picture.jpeg)
 
-Week 2:
-Studied movements logics, added player movement code - 9 hours.
+The game involves managing items and money between rounds. Players earn money at the end of each round and can use it to purchase ammo, shields, and new weapons from the shop.
 
-Week 3:
-Added camera follow implementation. Added enemy behaviour - 11 Hours this week (over 2 days).
+(https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/shop%20picture.jpeg)
 
-Week 4: 
-Added zombies characters with movement and attacks, and assets - 10 hours.
+The game has three maps, each with its unique challenges and assets. While the assets are the same across all three maps, the difficulty level varies.
 
-Week 5:
-Added Scenes and other assets - 7 hours.
+(https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/main%20menu%20picture.jpeg)
 
-Week 6:
-Designed and wrote wave spawners and triggered area - 8 Hours.
 
-Week 7:
-Downloaded and added backgrounds, zombies, pictures and looks - 8 Hours.
+## How to Play
 
-Week 8:
-Added animations to zombies, effects and more assets - 7 Hours.
+To start the game, click the "Play" button on the main menu. The player will spawn in the middle of the map with zombies coming from all directions. The goal is to eliminate as many zombies as possible before they reach the player.
 
-Week 9:
-Wrote Game Scripts and code for the whole game, fixed minor bugs - 13 Hours.
+Players can use the WASD keys to move around and the mouse to aim and shoot. Press the space bar to jump and avoid obstacles.
 
-Week 10:
-Added sprites, effects and visuals and assets - 8 Hours.
+Between rounds, players can visit the shop to purchase items and upgrade weapons. It is essential to manage resources efficiently to survive in later rounds.
 
-Week 11:
-Adjust Libraries folder and upload missing files - 6 Hours.
+## Controls
 
-Week 12:
-bugs fixes and finshes, uploaded the whole project - 5 Hours.
+- A,D keys: Movement
+- Mouse: Aim and shoot
+- W key: Jump
+- double W key: double jump
+- Q: Switch weapons
 
-Week 13:
-merge open PR's in github, resolve conflicts and arrange the repository - 5 Hours.
+(https://github.com/hakeemab/survival-of-the-fittest-game/blob/master/Library/controls%20picture.jpeg)
 
-2nd SEMESTER:
+## Credits
 
-Week 2:
-Implemented new health and shield bars system - 7 Hours
+Survival of the Fittest was created by [Hakeem Abushqara](https://github.com/hakeemab) and [Hadi Salami](https://github.com/Hadi6645)
 
-Week 3:
-Added new UI Clips and fixed ammo UI and added image UI to every single weapon - 9 Hours
-
-Week 4:
-added damage to each weapon and added new weapons - 8 Hours
-
-Week 5:
-Added more types of zombies with different powers - 8 Hours
-
-Week 6:
-Added game controls and shop at the end of every wave - 9 Hours
-
-Week 7:
-Added weapons switching and different fire-rates - 6 Hours
-
-Week 8:
-Did not work due to holidays
-
-Week 9:
-Added a new bigger map - 5 Hours
-
-Week 10:
-Added wall repairs and explosives - 7 Hours
-
-Week 11:
-Added new map with platforming - 4 Hours
-
-Week 12:
-Background and colors changes and bugs fixes
